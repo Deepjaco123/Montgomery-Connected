@@ -12,3 +12,10 @@
 				- base_maplayer.py
 				(when address is added:)
 				- 311 nearme_page (LLM call)
+
+
+Folders that need to be created to make the app work:
+- __pycache__
+- map_cache
+- map_icons 	(icons are missing)
+- json_data
