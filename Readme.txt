@@ -14,3 +14,10 @@ Core libraries needed to run the files:
 # geopandas = Spatial join
 # lmstudio = local LLM provider (ibm/granite-3.1-8b)
 
+
+Folders that need to be created to make the app work:
+- __pycache__
+- map_cache
+- map_icons 	(icons are missing)
+- json_data
+
