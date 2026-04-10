@@ -4,20 +4,10 @@ Scraped date from the web, to empower citizens with complex data insights near
 Their location.
 
 Core libraries needed to run the files:
-# pandas = Data Management
-# folium = Mapping
-# geopy = Geocoding
-# nicegui = Web Interface
-# requests = Connectivity
-# beautifulsoup4 = Scraping
-# pyproj = Adress finder
-# geopandas = Spatial join
 # lmstudio = local LLM provider (ibm/granite-3.1-8b)
 
+pip install nicegui
+pip install requests  
+pip install beautifulsoup4 
 
-Folders that need to be created to make the app work:
-- __pycache__
-- map_cache
-- map_icons 	(icons are missing)
-- json_data
 

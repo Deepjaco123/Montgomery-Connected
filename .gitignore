@@ -1,0 +1,6 @@
+json_data/
+__pycache__/
+.venv/
+worker.lock
+*.DS_Store
+
