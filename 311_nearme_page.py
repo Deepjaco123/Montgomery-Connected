@@ -12,8 +12,8 @@ HOME_ADDRESS_JSON_PATH = os.path.join(BASE_DIR, 'json_data', 'home_address.json'
 SERVICES_JSON_PATH = os.path.join(BASE_DIR, 'json_data', '311_nearme.json')
 SUMMARY_JSON_PATH = os.path.join(BASE_DIR, 'json_data', '311_summary.json')
 ARCGIS_SERVICE_URL = "https://services7.arcgis.com/xNUwUjOJqYE54USz/ArcGIS/rest/services/Environmental_Nuisance/FeatureServer/0/query"
-LM_STUDIO_URL = "http://127.0.0.1:1234/v1/chat/completions"
-MODEL_NAME = "ibm/granite-3.1-8b"
+OLLAMA_URL = "http://127.0.0.1:11434/v1/chat/completions"
+MODEL_NAME = "mistral:7b-instruct"
 
 # Global flag to prevent simultaneous generations
 _is_generating = False
@@ -99,19 +99,19 @@ async def _generate_summary_logic():
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
         ],
-        "temperature": 0.5,
-        "max_tokens": 200
+        # "temperature": 0.5,
+        # "max_tokens": 200
     }
 
-    print(f"🤖 Connecting to LM Studio with model: {MODEL_NAME}...")
+    print(f"🤖 Connecting to Ollama with model: {MODEL_NAME}...")
 
     try:
         async with httpx.AsyncClient() as client:
-            response = await client.post(LM_STUDIO_URL, json=payload, timeout=120.0)
+            response = await client.post(OLLAMA_URL, json=payload, timeout=120.0)
         
         if response.status_code == 200:
             result = response.json()
-            content = result['choices'][0]['message']['content']
+            content = result['choices'][0]['message']['content']  
             
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             save_data = {
